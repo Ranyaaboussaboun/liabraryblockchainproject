@@ -1,0 +1,33 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Access Control Interface</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.3.6/dist/web3.min.js"></script>
+    <script type="module" src="./app.js" defer></script>
+</head>
+<body>
+    <h1>Library Access Control Interface</h1>
+
+    <!-- Grant Access Form -->
+    <form id="grantAccessForm">
+        <label for="userAddress">User Address:</label>
+        <input type="text" id="userAddress" name="userAddress" required>
+
+        <button type="submit">Grant Access</button>
+    </form>
+
+    <!-- Check Access Form -->
+    <form id="checkAccessForm">
+        <label for="checkUserAddress">Check User Address:</label>
+        <input type="text" id="checkUserAddress" name="checkUserAddress" required>
+
+        <button type="submit">Check Access</button>
+    </form>
+
+    <!-- Display Access Rights Result -->
+    <div id="accessRights"></div>
+</body>
+</html>

@@ -1,0 +1,1762 @@
+{
+  "contractName": "LibraryAccessControl",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "users",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "hasReadAccess",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "hasWriteAccess",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "hasModifyAccess",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "read",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "write",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "modify",
+          "type": "bool"
+        }
+      ],
+      "name": "grantAccess",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "checkAccess",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"checkAccess\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"read\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"write\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"modify\",\"type\":\"bool\"}],\"name\":\"grantAccess\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"users\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"hasReadAccess\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"hasWriteAccess\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"hasModifyAccess\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/LibraryAccessControl.sol\":\"LibraryAccessControl\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/LibraryAccessControl.sol\":{\"keccak256\":\"0xd7172fb200bc6be0b7a904215e47052858a694acd0df4d230ac922736964f797\",\"urls\":[\"bzz-raw://f14827d2f1f3b386c48965e9c7b1a0c4e447b5bb39c0cbc154ad3bf6c998cbd6\",\"dweb:/ipfs/QmNMyZD9PUB1kxFbWcL1877a4shKUWAHEi8MCR4td7jdcq\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506103cd806100206000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c80630458d20114610046578063466a0146146100ae578063a87430ba14610120575b600080fd5b6100ac6004803603608081101561005c57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803515159060200190929190803515159060200190929190803515159060200190929190505050610192565b005b6100f0600480360360208110156100c457600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061025a565b60405180841515151581526020018315151515815260200182151515158152602001935050505060405180910390f35b6101626004803603602081101561013657600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610320565b60405180841515151581526020018315151515815260200182151515158152602001935050505060405180910390f35b6040518060600160405280841515815260200183151581526020018215158152506000808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008201518160000160006101000a81548160ff02191690831515021790555060208201518160000160016101000a81548160ff02191690831515021790555060408201518160000160026101000a81548160ff02191690831515021790555090505050505050565b6000806000610267610371565b6000808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206040518060600160405290816000820160009054906101000a900460ff161515151581526020016000820160019054906101000a900460ff161515151581526020016000820160029054906101000a900460ff1615151515815250509050806000015181602001518260400151935093509350509193909250565b60006020528060005260406000206000915090508060000160009054906101000a900460ff16908060000160019054906101000a900460ff16908060000160029054906101000a900460ff16905083565b6040518060600160405280600015158152602001600015158152602001600015158152509056fea265627a7a723158208ef8270a79726effa500a515227bf3e39b22178b0166fd97023ec98715a78a7664736f6c63430005100032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c80630458d20114610046578063466a0146146100ae578063a87430ba14610120575b600080fd5b6100ac6004803603608081101561005c57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803515159060200190929190803515159060200190929190803515159060200190929190505050610192565b005b6100f0600480360360208110156100c457600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061025a565b60405180841515151581526020018315151515815260200182151515158152602001935050505060405180910390f35b6101626004803603602081101561013657600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610320565b60405180841515151581526020018315151515815260200182151515158152602001935050505060405180910390f35b6040518060600160405280841515815260200183151581526020018215158152506000808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008201518160000160006101000a81548160ff02191690831515021790555060208201518160000160016101000a81548160ff02191690831515021790555060408201518160000160026101000a81548160ff02191690831515021790555090505050505050565b6000806000610267610371565b6000808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206040518060600160405290816000820160009054906101000a900460ff161515151581526020016000820160019054906101000a900460ff161515151581526020016000820160029054906101000a900460ff1615151515815250509050806000015181602001518260400151935093509350509193909250565b60006020528060005260406000206000915090508060000160009054906101000a900460ff16908060000160019054906101000a900460ff16908060000160029054906101000a900460ff16905083565b6040518060600160405280600015158152602001600015158152602001600015158152509056fea265627a7a723158208ef8270a79726effa500a515227bf3e39b22178b0166fd97023ec98715a78a7664736f6c63430005100032",
+  "sourceMap": "28:951:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;28:951:0;;;;;;;",
+  "deployedSourceMap": "28:951:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;28:951:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;445:236;;;;;;13:3:-1;8;5:12;2:2;;;30:1;27;20:12;2:2;445:236:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;744:232;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;744:232:0;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;183:37;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;183:37:0;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;445:236;548:125;;;;;;;;583:4;548:125;;;;;;618:5;548:125;;;;;;655:6;548:125;;;;;534:5;:11;540:4;534:11;;;;;;;;;;;;;;;:139;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;445:236;;;;:::o;744:232::-;800:4;806;812;829:23;;:::i;:::-;855:5;:11;861:4;855:11;;;;;;;;;;;;;;;829:37;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;885:11;:25;;;912:11;:26;;;940:11;:27;;;877:91;;;;;;;744:232;;;;;:::o;183:37::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;28:951::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "\r\npragma solidity ^0.5.16;\r\ncontract LibraryAccessControl {\r\n    struct User {\r\n        bool hasReadAccess;\r\n        bool hasWriteAccess;\r\n        bool hasModifyAccess;\r\n    }\r\n\r\n    mapping(address => User) public users; /*  associates each user's Ethereum address with a User struct that contains boolean flags for read, write, and modify access*/\r\n\r\n/*Allows the contract owner to grant or modify access rights for a specific use*/\r\n   \r\n    function grantAccess(address user, bool read, bool write, bool modify) public {\r\n        users[user] = User({\r\n            hasReadAccess: read,\r\n            hasWriteAccess: write,\r\n            hasModifyAccess: modify\r\n        });\r\n    }\r\n/*whether the user has read, write, and modify access*/\r\n    function checkAccess(address user) view public returns (bool, bool, bool) {\r\n        User memory currentUser = users[user];\r\n        return (currentUser.hasReadAccess, currentUser.hasWriteAccess, currentUser.hasModifyAccess);\r\n    }\r\n}\r\n",
+  "sourcePath": "C:\\Users\\Rania\\OneDrive\\Desktop\\projetliab\\LibraryAccessControl\\contracts\\LibraryAccessControl.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/LibraryAccessControl.sol",
+    "exportedSymbols": {
+      "LibraryAccessControl": [
+        61
+      ]
+    },
+    "id": 62,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".16"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "2:24:0"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 61,
+        "linearizedBaseContracts": [
+          61
+        ],
+        "name": "LibraryAccessControl",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "LibraryAccessControl.User",
+            "id": 8,
+            "members": [
+              {
+                "constant": false,
+                "id": 3,
+                "name": "hasReadAccess",
+                "nodeType": "VariableDeclaration",
+                "scope": 8,
+                "src": "88:18:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 2,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "88:4:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5,
+                "name": "hasWriteAccess",
+                "nodeType": "VariableDeclaration",
+                "scope": 8,
+                "src": "117:19:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 4,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "117:4:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7,
+                "name": "hasModifyAccess",
+                "nodeType": "VariableDeclaration",
+                "scope": 8,
+                "src": "147:20:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 6,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "147:4:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "User",
+            "nodeType": "StructDefinition",
+            "scope": 61,
+            "src": "65:110:0",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 12,
+            "name": "users",
+            "nodeType": "VariableDeclaration",
+            "scope": 61,
+            "src": "183:37:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_User_$8_storage_$",
+              "typeString": "mapping(address => struct LibraryAccessControl.User)"
+            },
+            "typeName": {
+              "id": 11,
+              "keyType": {
+                "id": 9,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "191:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "183:24:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_User_$8_storage_$",
+                "typeString": "mapping(address => struct LibraryAccessControl.User)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 10,
+                "name": "User",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 8,
+                "src": "202:4:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_User_$8_storage_ptr",
+                  "typeString": "struct LibraryAccessControl.User"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 33,
+              "nodeType": "Block",
+              "src": "523:158:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 31,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 23,
+                        "name": "users",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 12,
+                        "src": "534:5:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_struct$_User_$8_storage_$",
+                          "typeString": "mapping(address => struct LibraryAccessControl.User storage ref)"
+                        }
+                      },
+                      "id": 25,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 24,
+                        "name": "user",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 14,
+                        "src": "540:4:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "534:11:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_User_$8_storage",
+                        "typeString": "struct LibraryAccessControl.User storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 27,
+                          "name": "read",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 16,
+                          "src": "583:4:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 28,
+                          "name": "write",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 18,
+                          "src": "618:5:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 29,
+                          "name": "modify",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 20,
+                          "src": "655:6:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        ],
+                        "id": 26,
+                        "name": "User",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 8,
+                        "src": "548:4:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_struct$_User_$8_storage_ptr_$",
+                          "typeString": "type(struct LibraryAccessControl.User storage pointer)"
+                        }
+                      },
+                      "id": 30,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "structConstructorCall",
+                      "lValueRequested": false,
+                      "names": [
+                        "hasReadAccess",
+                        "hasWriteAccess",
+                        "hasModifyAccess"
+                      ],
+                      "nodeType": "FunctionCall",
+                      "src": "548:125:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_User_$8_memory",
+                        "typeString": "struct LibraryAccessControl.User memory"
+                      }
+                    },
+                    "src": "534:139:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_User_$8_storage",
+                      "typeString": "struct LibraryAccessControl.User storage ref"
+                    }
+                  },
+                  "id": 32,
+                  "nodeType": "ExpressionStatement",
+                  "src": "534:139:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 34,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "grantAccess",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 21,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14,
+                  "name": "user",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 34,
+                  "src": "466:12:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 13,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "466:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16,
+                  "name": "read",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 34,
+                  "src": "480:9:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 15,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "480:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 18,
+                  "name": "write",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 34,
+                  "src": "491:10:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 17,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "491:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20,
+                  "name": "modify",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 34,
+                  "src": "503:11:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 19,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "503:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "465:50:0"
+            },
+            "returnParameters": {
+              "id": 22,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "523:0:0"
+            },
+            "scope": 61,
+            "src": "445:236:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 59,
+              "nodeType": "Block",
+              "src": "818:158:0",
+              "statements": [
+                {
+                  "assignments": [
+                    46
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 46,
+                      "name": "currentUser",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 59,
+                      "src": "829:23:0",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_User_$8_memory_ptr",
+                        "typeString": "struct LibraryAccessControl.User"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 45,
+                        "name": "User",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 8,
+                        "src": "829:4:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_User_$8_storage_ptr",
+                          "typeString": "struct LibraryAccessControl.User"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 50,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 47,
+                      "name": "users",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 12,
+                      "src": "855:5:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_struct$_User_$8_storage_$",
+                        "typeString": "mapping(address => struct LibraryAccessControl.User storage ref)"
+                      }
+                    },
+                    "id": 49,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 48,
+                      "name": "user",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 36,
+                      "src": "861:4:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "855:11:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_User_$8_storage",
+                      "typeString": "struct LibraryAccessControl.User storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "829:37:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 51,
+                          "name": "currentUser",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 46,
+                          "src": "885:11:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_User_$8_memory_ptr",
+                            "typeString": "struct LibraryAccessControl.User memory"
+                          }
+                        },
+                        "id": 52,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "hasReadAccess",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 3,
+                        "src": "885:25:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 53,
+                          "name": "currentUser",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 46,
+                          "src": "912:11:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_User_$8_memory_ptr",
+                            "typeString": "struct LibraryAccessControl.User memory"
+                          }
+                        },
+                        "id": 54,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "hasWriteAccess",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 5,
+                        "src": "912:26:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 55,
+                          "name": "currentUser",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 46,
+                          "src": "940:11:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_User_$8_memory_ptr",
+                            "typeString": "struct LibraryAccessControl.User memory"
+                          }
+                        },
+                        "id": 56,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "hasModifyAccess",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 7,
+                        "src": "940:27:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "id": 57,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "884:84:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$_t_bool_$_t_bool_$_t_bool_$",
+                      "typeString": "tuple(bool,bool,bool)"
+                    }
+                  },
+                  "functionReturnParameters": 44,
+                  "id": 58,
+                  "nodeType": "Return",
+                  "src": "877:91:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 60,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "checkAccess",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 37,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 36,
+                  "name": "user",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 60,
+                  "src": "765:12:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 35,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "765:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "764:14:0"
+            },
+            "returnParameters": {
+              "id": 44,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 39,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 60,
+                  "src": "800:4:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 38,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "800:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 41,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 60,
+                  "src": "806:4:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 40,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "806:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 43,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 60,
+                  "src": "812:4:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 42,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "812:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "799:18:0"
+            },
+            "scope": 61,
+            "src": "744:232:0",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 62,
+        "src": "28:951:0"
+      }
+    ],
+    "src": "2:979:0"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/LibraryAccessControl.sol",
+      "exportedSymbols": {
+        "LibraryAccessControl": [
+          61
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.5",
+            ".16"
+          ]
+        },
+        "id": 1,
+        "name": "PragmaDirective",
+        "src": "2:24:0"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            61
+          ],
+          "name": "LibraryAccessControl",
+          "scope": 62
+        },
+        "children": [
+          {
+            "attributes": {
+              "canonicalName": "LibraryAccessControl.User",
+              "name": "User",
+              "scope": 61,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "hasReadAccess",
+                  "scope": 8,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "bool",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "bool",
+                      "type": "bool"
+                    },
+                    "id": 2,
+                    "name": "ElementaryTypeName",
+                    "src": "88:4:0"
+                  }
+                ],
+                "id": 3,
+                "name": "VariableDeclaration",
+                "src": "88:18:0"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "hasWriteAccess",
+                  "scope": 8,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "bool",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "bool",
+                      "type": "bool"
+                    },
+                    "id": 4,
+                    "name": "ElementaryTypeName",
+                    "src": "117:4:0"
+                  }
+                ],
+                "id": 5,
+                "name": "VariableDeclaration",
+                "src": "117:19:0"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "hasModifyAccess",
+                  "scope": 8,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "bool",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "bool",
+                      "type": "bool"
+                    },
+                    "id": 6,
+                    "name": "ElementaryTypeName",
+                    "src": "147:4:0"
+                  }
+                ],
+                "id": 7,
+                "name": "VariableDeclaration",
+                "src": "147:20:0"
+              }
+            ],
+            "id": 8,
+            "name": "StructDefinition",
+            "src": "65:110:0"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "users",
+              "scope": 61,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "mapping(address => struct LibraryAccessControl.User)",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "type": "mapping(address => struct LibraryAccessControl.User)"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "type": "address"
+                    },
+                    "id": 9,
+                    "name": "ElementaryTypeName",
+                    "src": "191:7:0"
+                  },
+                  {
+                    "attributes": {
+                      "contractScope": null,
+                      "name": "User",
+                      "referencedDeclaration": 8,
+                      "type": "struct LibraryAccessControl.User"
+                    },
+                    "id": 10,
+                    "name": "UserDefinedTypeName",
+                    "src": "202:4:0"
+                  }
+                ],
+                "id": 11,
+                "name": "Mapping",
+                "src": "183:24:0"
+              }
+            ],
+            "id": 12,
+            "name": "VariableDeclaration",
+            "src": "183:37:0"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "grantAccess",
+              "scope": 61,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "user",
+                      "scope": 34,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 13,
+                        "name": "ElementaryTypeName",
+                        "src": "466:7:0"
+                      }
+                    ],
+                    "id": 14,
+                    "name": "VariableDeclaration",
+                    "src": "466:12:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "read",
+                      "scope": 34,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 15,
+                        "name": "ElementaryTypeName",
+                        "src": "480:4:0"
+                      }
+                    ],
+                    "id": 16,
+                    "name": "VariableDeclaration",
+                    "src": "480:9:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "write",
+                      "scope": 34,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 17,
+                        "name": "ElementaryTypeName",
+                        "src": "491:4:0"
+                      }
+                    ],
+                    "id": 18,
+                    "name": "VariableDeclaration",
+                    "src": "491:10:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "modify",
+                      "scope": 34,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 19,
+                        "name": "ElementaryTypeName",
+                        "src": "503:4:0"
+                      }
+                    ],
+                    "id": 20,
+                    "name": "VariableDeclaration",
+                    "src": "503:11:0"
+                  }
+                ],
+                "id": 21,
+                "name": "ParameterList",
+                "src": "465:50:0"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 22,
+                "name": "ParameterList",
+                "src": "523:0:0"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "struct LibraryAccessControl.User storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "type": "struct LibraryAccessControl.User storage ref"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 12,
+                                  "type": "mapping(address => struct LibraryAccessControl.User storage ref)",
+                                  "value": "users"
+                                },
+                                "id": 23,
+                                "name": "Identifier",
+                                "src": "534:5:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 14,
+                                  "type": "address",
+                                  "value": "user"
+                                },
+                                "id": 24,
+                                "name": "Identifier",
+                                "src": "540:4:0"
+                              }
+                            ],
+                            "id": 25,
+                            "name": "IndexAccess",
+                            "src": "534:11:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": true,
+                              "lValueRequested": false,
+                              "names": [
+                                "hasReadAccess",
+                                "hasWriteAccess",
+                                "hasModifyAccess"
+                              ],
+                              "type": "struct LibraryAccessControl.User memory",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_bool",
+                                      "typeString": "bool"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_bool",
+                                      "typeString": "bool"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_bool",
+                                      "typeString": "bool"
+                                    }
+                                  ],
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 8,
+                                  "type": "type(struct LibraryAccessControl.User storage pointer)",
+                                  "value": "User"
+                                },
+                                "id": 26,
+                                "name": "Identifier",
+                                "src": "548:4:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 16,
+                                  "type": "bool",
+                                  "value": "read"
+                                },
+                                "id": 27,
+                                "name": "Identifier",
+                                "src": "583:4:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 18,
+                                  "type": "bool",
+                                  "value": "write"
+                                },
+                                "id": 28,
+                                "name": "Identifier",
+                                "src": "618:5:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 20,
+                                  "type": "bool",
+                                  "value": "modify"
+                                },
+                                "id": 29,
+                                "name": "Identifier",
+                                "src": "655:6:0"
+                              }
+                            ],
+                            "id": 30,
+                            "name": "FunctionCall",
+                            "src": "548:125:0"
+                          }
+                        ],
+                        "id": 31,
+                        "name": "Assignment",
+                        "src": "534:139:0"
+                      }
+                    ],
+                    "id": 32,
+                    "name": "ExpressionStatement",
+                    "src": "534:139:0"
+                  }
+                ],
+                "id": 33,
+                "name": "Block",
+                "src": "523:158:0"
+              }
+            ],
+            "id": 34,
+            "name": "FunctionDefinition",
+            "src": "445:236:0"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "checkAccess",
+              "scope": 61,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "user",
+                      "scope": 60,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 35,
+                        "name": "ElementaryTypeName",
+                        "src": "765:7:0"
+                      }
+                    ],
+                    "id": 36,
+                    "name": "VariableDeclaration",
+                    "src": "765:12:0"
+                  }
+                ],
+                "id": 37,
+                "name": "ParameterList",
+                "src": "764:14:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 60,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 38,
+                        "name": "ElementaryTypeName",
+                        "src": "800:4:0"
+                      }
+                    ],
+                    "id": 39,
+                    "name": "VariableDeclaration",
+                    "src": "800:4:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 60,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 40,
+                        "name": "ElementaryTypeName",
+                        "src": "806:4:0"
+                      }
+                    ],
+                    "id": 41,
+                    "name": "VariableDeclaration",
+                    "src": "806:4:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 60,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 42,
+                        "name": "ElementaryTypeName",
+                        "src": "812:4:0"
+                      }
+                    ],
+                    "id": 43,
+                    "name": "VariableDeclaration",
+                    "src": "812:4:0"
+                  }
+                ],
+                "id": 44,
+                "name": "ParameterList",
+                "src": "799:18:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "assignments": [
+                        46
+                      ]
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "name": "currentUser",
+                          "scope": 59,
+                          "stateVariable": false,
+                          "storageLocation": "memory",
+                          "type": "struct LibraryAccessControl.User",
+                          "value": null,
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "contractScope": null,
+                              "name": "User",
+                              "referencedDeclaration": 8,
+                              "type": "struct LibraryAccessControl.User"
+                            },
+                            "id": 45,
+                            "name": "UserDefinedTypeName",
+                            "src": "829:4:0"
+                          }
+                        ],
+                        "id": 46,
+                        "name": "VariableDeclaration",
+                        "src": "829:23:0"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "struct LibraryAccessControl.User storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 12,
+                              "type": "mapping(address => struct LibraryAccessControl.User storage ref)",
+                              "value": "users"
+                            },
+                            "id": 47,
+                            "name": "Identifier",
+                            "src": "855:5:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 36,
+                              "type": "address",
+                              "value": "user"
+                            },
+                            "id": 48,
+                            "name": "Identifier",
+                            "src": "861:4:0"
+                          }
+                        ],
+                        "id": 49,
+                        "name": "IndexAccess",
+                        "src": "855:11:0"
+                      }
+                    ],
+                    "id": 50,
+                    "name": "VariableDeclarationStatement",
+                    "src": "829:37:0"
+                  },
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 44
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isInlineArray": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "tuple(bool,bool,bool)"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "hasReadAccess",
+                              "referencedDeclaration": 3,
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 46,
+                                  "type": "struct LibraryAccessControl.User memory",
+                                  "value": "currentUser"
+                                },
+                                "id": 51,
+                                "name": "Identifier",
+                                "src": "885:11:0"
+                              }
+                            ],
+                            "id": 52,
+                            "name": "MemberAccess",
+                            "src": "885:25:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "hasWriteAccess",
+                              "referencedDeclaration": 5,
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 46,
+                                  "type": "struct LibraryAccessControl.User memory",
+                                  "value": "currentUser"
+                                },
+                                "id": 53,
+                                "name": "Identifier",
+                                "src": "912:11:0"
+                              }
+                            ],
+                            "id": 54,
+                            "name": "MemberAccess",
+                            "src": "912:26:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "hasModifyAccess",
+                              "referencedDeclaration": 7,
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 46,
+                                  "type": "struct LibraryAccessControl.User memory",
+                                  "value": "currentUser"
+                                },
+                                "id": 55,
+                                "name": "Identifier",
+                                "src": "940:11:0"
+                              }
+                            ],
+                            "id": 56,
+                            "name": "MemberAccess",
+                            "src": "940:27:0"
+                          }
+                        ],
+                        "id": 57,
+                        "name": "TupleExpression",
+                        "src": "884:84:0"
+                      }
+                    ],
+                    "id": 58,
+                    "name": "Return",
+                    "src": "877:91:0"
+                  }
+                ],
+                "id": 59,
+                "name": "Block",
+                "src": "818:158:0"
+              }
+            ],
+            "id": 60,
+            "name": "FunctionDefinition",
+            "src": "744:232:0"
+          }
+        ],
+        "id": 61,
+        "name": "ContractDefinition",
+        "src": "28:951:0"
+      }
+    ],
+    "id": 62,
+    "name": "SourceUnit",
+    "src": "2:979:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x3d0DDD0E78BDEC23f6A85d9b07Cc0299CB4A5a3e",
+      "transactionHash": "0x581993957420cb1855b632d1080993a79e11b085132d9314cd6e4e9636cc824e"
+    }
+  },
+  "schemaVersion": "3.4.16",
+  "updatedAt": "2023-12-13T18:57:27.840Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
